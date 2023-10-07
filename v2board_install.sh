@@ -4,6 +4,11 @@
 #Author:GZ
 #Mail:V2board@qq.com
 
+red='\033[0;31m'
+green='\033[36m'
+yellow='\033[0;33m'
+plain='\033[0m'
+
 process()
 {
 install_date="V2board_install_$(date +%Y-%m-%d_%H:%M:%S).log"
@@ -24,7 +29,7 @@ done
 START_TIME=`date +%s`
 
 
-echo -e "\033[36m#######################################################################\033[0m"
+echo -e "${green}#######################################################################${plain}"
 echo -e "\033[36m#                                                                     #\033[0m"
 echo -e "\033[36m#                  正在关闭SElinux策略 请稍等~                        #\033[0m"
 echo -e "\033[36m#                                                                     #\033[0m"
@@ -191,8 +196,8 @@ git clone https://github.com/v2board/v2board.git
 cd /usr/share/nginx/html/v2board
 echo -e "\033[36m请输入y确认安装： \033[0m"
 sh /usr/share/nginx/html/v2board/init.sh
-git clone https://gitee.com/gz1903/v2board-theme-LuFly.git /usr/share/nginx/html/v2board/public/LuFly
-mv /usr/share/nginx/html/v2board/public/LuFly/* /usr/share/nginx/html/v2board/public/
+#git clone https://gitee.com/gz1903/v2board-theme-LuFly.git /usr/share/nginx/html/v2board/public/LuFly
+#mv /usr/share/nginx/html/v2board/public/LuFly/* /usr/share/nginx/html/v2board/public/
 chmod -R 777 /usr/share/nginx/html/v2board
 # 添加定时任务
 echo "* * * * * root /usr/bin/php /usr/share/nginx/html/v2board/artisan schedule:run >/dev/null 2>/dev/null &" >> /etc/crontab
