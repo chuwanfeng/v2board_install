@@ -132,7 +132,7 @@ echo "\033[36m##################################################################
 cat > /etc/nginx/sites-available/v2board <<"eof"
 server {
     listen      80;
-    server_name chuwanfeng.top;
+    server_name www.heima001.com;
     root        /var/www/v2board/public;
     index       index.php;
     client_max_body_size 0;
@@ -162,12 +162,13 @@ ips="$(curl ip.sb)"
 
 # 加入开机启动
 systemctl restart php8.2-fpm mysqld redis nginx
-systemctl enable php8.2-fpm mysqld nginx redis
+systemctl enable php8.2-fpm mariadb nginx redis-server
+systemctl is-enabled php8.2-fpm mariadb nginx redis-server horizon
 echo $?="服务启动完成"
 # 清除缓存垃圾
-rm -rf /usr/local/src/v2board_install
-rm -rf /usr/local/src/lnmp_rpm
-rm -rf /usr/share/nginx/html/v2board/public/LuFly
+#rm -rf /usr/local/src/v2board_install
+#rm -rf /usr/local/src/lnmp_rpm
+#rm -rf /usr/share/nginx/html/v2board/public/LuFly
 
 # V2Board安装完成时间统计
 END_TIME=`date +%s`

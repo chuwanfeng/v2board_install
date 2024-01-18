@@ -5,12 +5,12 @@
 #### 环境介绍(仅介绍脚本自动安装的环境，跑脚本前不需要安装任何环境)：
 
 ```shell
-Nginx
-mariadb  5.6.51
-PHP     7.4
-redis
+Nginx   1.22.1
+MariaDB 10.11.4
+PHP     PHP 8.2
+redis   7.0.11
 ```
-> 测试1H1G机器部署，170s左右即可。请使用centos7系列纯净主机部署。
+> 测试1H1G机器部署，170s左右即可。请使用Debian11+系列纯净主机部署。
 
 
 #### 软件版本：
@@ -26,6 +26,33 @@ apt-get update && apt-get install -y git wget && git clone https://github.com/ch
 ```
 
 #### 安装过程：
+
+mysql安全配置脚本：
+```shell
+#输入root(mysql)的密码。默认没有，直接回车
+Enter current password for root (enter for none):
+
+#是否切换到unix套接字身份验证[Y/n]
+Switch to unix_socket authentication [Y/n] n
+
+#是否设置root密码
+Change the root password? [Y/n]
+#如果选Y，就输入2次密码
+New password:
+Re-enter new password:
+
+#是否删除匿名用户?(就是空用户)，建议删除
+Remove anonymous users? [Y/n]
+
+#是否不允许远程root登录
+Disallow root login remotely? [Y/n]
+
+#是否删除test数据库
+Remove test database and access to it? [Y/n]
+
+#是否加载权限使之生效
+Reload privilege tables now? [Y/n]
+````
 
 自定义数据库密码：
 
@@ -96,6 +123,65 @@ __     ______  ____                      _
 
 ```
 
+#### 签发ssl证书
+```shell
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+#输入邮箱地址
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): chuwwanfeng@hotmail.com
+
+#阅读服务条款，必须同意选 y
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf. You must
+agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: y
+
+#向你发送新闻、活动等邮件，选择y,n都可以
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: n
+Account registered.
+
+#您希望为哪些名称激活HTTPS？选择用逗号和/或空格分隔的适当数字，回车选择所有项，输入C取消激活
+Which names would you like to activate HTTPS for?
+We recommend selecting either all domains, or all domains in a VirtualHost/server block.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: www.baidu.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 
+Requesting a certificate for chuwanfeng.top
+
+Successfully received certificate.
+#证书保存在以下地址
+Certificate is saved at: /etc/letsencrypt/live/chuwanfeng.top/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/chuwanfeng.top/privkey.pem
+This certificate expires on 2024-04-17.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+#部署证书
+Deploying certificate
+Successfully deployed certificate for chuwanfeng.top to /etc/nginx/sites-enabled/v2board
+Congratulations! You have successfully enabled HTTPS on https://chuwanfeng.top
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    13  100    13    0     0     50      0 --:--:-- --:--:-- --:--:--    50
+```
 
 
 #### 完成安装
@@ -113,10 +199,6 @@ __     ______  ____                      _
  内网访问       :http://
  外网访问       :http://
  安装日志文件   :/var/log/V2board_install_2021-12-10_17:15:09.log
-------------------------------------------------------------------
- 如果安装有问题请反馈安装日志文件。
- 使用有问题请在这里寻求帮助:https://gz1903.github.io
- 电子邮箱:v2board@qq.com
 ------------------------------------------------------------------
 ```
 
