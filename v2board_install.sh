@@ -20,10 +20,10 @@ printf "
 #######################################################################\033[0m
 "
 
-#while :; do echo
-#    read -p "请输入Mysql数据库root密码: " Database_Password
-#    [ -n "$Database_Password" ] && break
-#done
+while :; do echo
+    read -p "请输入Mysql数据库root密码: " Database_Password
+    [ -n "$Database_Password" ] && break
+done
 
 # 从接收信息后开始统计脚本执行时间
 START_TIME=`date +%s`
