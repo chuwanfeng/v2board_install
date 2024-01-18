@@ -102,8 +102,8 @@ chown -R www-data:www-data v2board/
 
 # 添加定时任务
 echo "\033[36m添加计划任务： \033[0m"
-echo "* * * * * root /usr/bin/php /var/www/v2board/artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
-crontab -u www-data /etc/crontab
+echo "* * * * * php /var/www/v2board/artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab.v2
+crontab -u www-data /etc/crontab.v2
 
 # 新建队列服务
 echo "\033[36m新建队列服务： \033[0m"
@@ -161,8 +161,8 @@ ip="$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, 
 ips="$(curl ip.sb)"
 
 # 加入开机启动
+systemctl restart php8.2-fpm mysqld redis nginx
 systemctl enable php8.2-fpm mysqld nginx redis
-systemctl restart php8.2-fpm mysqld redis && nginx
 echo $?="服务启动完成"
 # 清除缓存垃圾
 rm -rf /usr/local/src/v2board_install
@@ -181,8 +181,8 @@ echo "\033[32m##################################################################
 echo "\033[32m 数据库用户名   :root\033[0m"
 echo "\033[32m 数据库密码     :"$Database_Password
 echo "\033[32m 网站目录       :/var/www/v2board \033[0m"
-echo "\033[32m Nginx配置文件  :/etc/nginx/conf.d/v2board.conf \033[0m"
-echo "\033[32m PHP配置目录    :/etc/php.ini \033[0m"
+echo "\033[32m Nginx配置文件  :/etc/nginx/sites-available/v2board \033[0m"
+echo "\033[32m PHP配置目录    :/etc/php/8.2/fpm/php.ini \033[0m"
 echo "\033[32m 内网访问       :http://"$ip
 echo "\033[32m 外网访问       :http://"$ips
 echo "\033[32m 安装日志文件   :/var/log/"$install_date
