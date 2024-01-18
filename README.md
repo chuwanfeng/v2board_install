@@ -22,7 +22,7 @@ V2board 1.7.4
 #### 一键部署脚本：
 
 ```shell
-yum -y install git wget && git clone https://github.com/chuwanfeng/v2board_install.git /usr/local/src/v2board_install && cd /usr/local/src/v2board_install && chmod +x v2board_install.sh && ./v2board_install.sh
+apt-get update && apt-get install -y git wget && git clone https://github.com/chuwanfeng/v2board_install.git /usr/local/src/v2board_install && cd /usr/local/src/v2board_install && chmod +x v2board_install.sh && ./v2board_install.sh
 ```
 
 #### 安装过程：
