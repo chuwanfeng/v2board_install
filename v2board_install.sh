@@ -96,14 +96,14 @@ echo "\033[36m安装V2board： \033[0m"
 php artisan v2board:install
 
 echo "\033[36m修改权限和所有者： \033[0m"
+cd /var/www
 chmod -R 755 v2board/
 chown -R www-data:www-data v2board/
 
 # 添加定时任务
 echo "\033[36m添加计划任务： \033[0m"
-crontab -u www-data -e <<"eof"
-* * * * * php /var/www/v2board/artisan schedule:run >> /dev/null 2>&1
-eof
+echo "* * * * * root /usr/bin/php /var/www/v2board/artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
+crontab -u www-data /etc/crontab
 
 # 新建队列服务
 echo "\033[36m新建队列服务： \033[0m"
@@ -132,7 +132,7 @@ echo "\033[36m##################################################################
 cat > /etc/nginx/sites-available/v2board <<"eof"
 server {
     listen      80;
-    server_name chuwanfeng.com;
+    server_name chuwanfeng.top;
     root        /var/www/v2board/public;
     index       index.php;
     client_max_body_size 0;
@@ -160,6 +160,8 @@ ip="$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, 
 #获取主机外网ip
 ips="$(curl ip.sb)"
 
+# 加入开机启动
+systemctl enable php8.2-fpm mysqld nginx redis
 systemctl restart php8.2-fpm mysqld redis && nginx
 echo $?="服务启动完成"
 # 清除缓存垃圾
