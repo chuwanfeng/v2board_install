@@ -51,16 +51,16 @@ apt -y install nginx python3-certbot-nginx mariadb-server redis-server
 
 echo -e "\033[36m#######################################################################\033[0m"
 echo -e "\033[36m#                                                                     #\033[0m"
-echo -e "\033[36m#                 安装安装php7.4                    #\033[0m"
+echo -e "\033[36m#                 安装安装php8.2                    #\033[0m"
 echo -e "\033[36m#                                                                     #\033[0m"
 echo -e "\033[36m#######################################################################\033[0m"
 apt -y install curl apt-transport-https ca-certificates lsb-release
 curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
-apt -y install php7.4-common php7.4-cli \
-php7.4-fpm php7.4-gd php7.4-mysql php7.4-mbstring \
-php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-zip \
-php7.4-intl php7.4-bz2 php7.4-bcmath php7.4-redis
+apt -y install php8.2 php8.2-cli \
+php8.2-fpm php8.2-gd php8.2-mysql php8.2-mbstring \
+php8.2-curl php8.2-xml php8.2-xmlrpc php8.2-zip \
+php8.2-intl php8.2-bz2 php8.2-bcmath php8.2-redis
 
 echo -e "\033[36m#######################################################################\033[0m"
 echo -e "\033[36m#                                                                     #\033[0m"
