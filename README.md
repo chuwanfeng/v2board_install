@@ -59,8 +59,7 @@ Reload privilege tables now? [Y/n]
 ```shell
 ####################################################################
 #                     欢迎使用V2board一键部署脚本                     #
-#                      脚本适配环境Debian11+             #
-#                更多信息请访问 https://gz1903.github.io             #
+#                      脚本适配环境Debian11+                        #
 ####################################################################
 
 请输入Mysql数据库root密码:(自定义)
@@ -129,7 +128,7 @@ Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
 #输入邮箱地址
 Enter email address (used for urgent renewal and security notices)
- (Enter 'c' to cancel): chuwwanfeng@hotmail.com
+ (Enter 'c' to cancel): 你的邮箱地址
 
 #阅读服务条款，必须同意选 y
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -158,20 +157,20 @@ We recommend selecting either all domains, or all domains in a VirtualHost/serve
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel): 
-Requesting a certificate for chuwanfeng.top
+Requesting a certificate for www.baidu.com
 
 Successfully received certificate.
 #证书保存在以下地址
-Certificate is saved at: /etc/letsencrypt/live/chuwanfeng.top/fullchain.pem
-Key is saved at:         /etc/letsencrypt/live/chuwanfeng.top/privkey.pem
+Certificate is saved at: /etc/letsencrypt/live/www.baidu.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/www.baidu.com/privkey.pem
 This certificate expires on 2024-04-17.
 These files will be updated when the certificate renews.
 Certbot has set up a scheduled task to automatically renew this certificate in the background.
 
 #部署证书
 Deploying certificate
-Successfully deployed certificate for chuwanfeng.top to /etc/nginx/sites-enabled/v2board
-Congratulations! You have successfully enabled HTTPS on https://chuwanfeng.top
+Successfully deployed certificate for www.baidu.com to /etc/nginx/sites-enabled/v2board
+Congratulations! You have successfully enabled HTTPS on https://www.baidu.com
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 If you like Certbot, please consider supporting our work by:
