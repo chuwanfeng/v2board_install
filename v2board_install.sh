@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#Date:2023.10.07
+#Date:2024.1.19
 #Author:魅lan.肉肉
 #Mail:chuwanfeng@hotmail.com
 
@@ -166,7 +166,7 @@ systemctl enable php8.2-fpm mariadb nginx redis-server
 systemctl is-enabled php8.2-fpm mariadb nginx redis-server horizon
 echo $?="服务启动完成"
 # 清除缓存垃圾
-#rm -rf /usr/local/src/v2board_install
+rm -rf /usr/local/src/v2board_install
 #rm -rf /usr/local/src/lnmp_rpm
 #rm -rf /usr/share/nginx/html/v2board/public/LuFly
 
