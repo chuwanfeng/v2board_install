@@ -131,7 +131,7 @@ echo "\033[36m#                                                                 
 echo "\033[36m#######################################################################\033[0m"
 cat > /etc/nginx/sites-available/v2board <<"eof"
 server {
-    listen      80;
+    listen      80 http2;
     server_name www.heima001.com;
     root        /var/www/v2board/public;
     index       index.php;
