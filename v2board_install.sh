@@ -44,10 +44,10 @@ apt -y install nginx python3-certbot-nginx mariadb-server redis-server
 
 #https://raw.githubusercontent.com/chuwanfeng/v2board_install/main/ngx_stream_module.so
 #下载stream文件
-wget https://raw.githubusercontent.com/chuwanfeng/v2board_install/main/ngx_stream_module.so
-mkdir /usr/lib/nginx
-sudo mkdir /usr/lib/nginx/modules
-cp ngx_stream_module.so /usr/lib/nginx/modules
+#wget https://raw.githubusercontent.com/chuwanfeng/v2board_install/main/ngx_stream_module.so
+#mkdir /usr/lib/nginx
+#sudo mkdir /usr/lib/nginx/modules
+#cp ngx_stream_module.so /usr/lib/nginx/modules
 
 echo "\033[36m#######################################################################\033[0m"
 echo "\033[36m#                                                                     #\033[0m"
