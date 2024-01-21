@@ -36,22 +36,22 @@ Enter current password for root (enter for none):
 Switch to unix_socket authentication [Y/n] n
 
 #是否设置root密码
-Change the root password? [Y/n]
+Change the root password? [Y/n]y
 #如果选Y，就输入2次密码
-New password:
-Re-enter new password:
+New password:你的数据库密码
+Re-enter new password:再次输入
 
 #是否删除匿名用户?(就是空用户)，建议删除
-Remove anonymous users? [Y/n]
+Remove anonymous users? [Y/n]y
 
-#是否不允许远程root登录
-Disallow root login remotely? [Y/n]
+#是否不允许远程root登录,输y或回车
+Disallow root login remotely? [Y/n]y
 
-#是否删除test数据库
-Remove test database and access to it? [Y/n]
+#是否删除test数据库，输y或回车
+Remove test database and access to it? [Y/n]y
 
-#是否加载权限使之生效
-Reload privilege tables now? [Y/n]
+#是否加载权限使之生效，输y或回车
+Reload privilege tables now? [Y/n]y
 ````
 
 自定义数据库密码：
