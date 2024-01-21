@@ -38,9 +38,16 @@ echo "\033[36m#                                                                 
 echo "\033[36m#                 安装nginx/mariadb/redis/certbot                      #\033[0m"
 echo "\033[36m#                                                                     #\033[0m"
 echo "\033[36m#######################################################################\033[0m"
-sudo apt update
+#sudo apt update
 apt -y install curl apt-transport-https ca-certificates lsb-release
 apt -y install nginx python3-certbot-nginx mariadb-server redis-server
+
+#https://raw.githubusercontent.com/chuwanfeng/v2board_install/main/ngx_stream_module.so
+#下载stream文件
+wget https://raw.githubusercontent.com/chuwanfeng/v2board_install/main/ngx_stream_module.so
+mkdir /usr/lib/nginx
+sudo mkdir /usr/lib/nginx/modules
+cp ngx_stream_module.so /usr/lib/nginx/modules
 
 echo "\033[36m#######################################################################\033[0m"
 echo "\033[36m#                                                                     #\033[0m"
@@ -132,7 +139,7 @@ echo "\033[36m#                                                                 
 echo "\033[36m#######################################################################\033[0m"
 cat > /etc/nginx/sites-available/v2board <<"eof"
 server {
-    listen      80 http2;
+    listen      80;
     server_name www.heima001.com;
     root        /var/www/v2board/public;
     index       index.php;
