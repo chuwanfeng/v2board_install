@@ -140,7 +140,7 @@ echo "\033[36m##################################################################
 cat > /etc/nginx/sites-available/v2board <<"eof"
 server {
     listen      80;
-    server_name api.heima001.com;
+    server_name api.chuwanfeng.top;
     root        /var/www/v2board/public;
     index       index.php;
     client_max_body_size 0;
