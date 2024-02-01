@@ -38,8 +38,8 @@ echo "\033[36m#                                                                 
 echo "\033[36m#                 安装nginx/mariadb/redis/certbot                      #\033[0m"
 echo "\033[36m#                                                                     #\033[0m"
 echo "\033[36m#######################################################################\033[0m"
-sudo apt update
-apt -y install curl apt-transport-https ca-certificates lsb-release
+apt-get update
+apt-get -y install curl apt-transport-https ca-certificates lsb-release
 apt -y install nginx python3-certbot-nginx mariadb-server redis-server
 
 #https://raw.githubusercontent.com/chuwanfeng/v2board_install/main/ngx_stream_module.so
@@ -55,7 +55,8 @@ echo "\033[36m#                 安装安装php8.2                    #\033[0m"
 echo "\033[36m#                                                                     #\033[0m"
 echo "\033[36m#######################################################################\033[0m"
 curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
-echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+
 apt -y install php8.2 php8.2-cli \
 php8.2-fpm php8.2-gd php8.2-mysql php8.2-mbstring \
 php8.2-curl php8.2-xml php8.2-xmlrpc php8.2-zip \
@@ -159,7 +160,7 @@ server {
 }
 eof
 echo "启用站点"
-ln -s /etc/nginx/sites-available/v2board /etc/nginx/sites-enabled/v2board
+ln -s /etc/nginx/sites-available/v2boarduser /etc/nginx/sites-enabled/v2boarduser
 echo "签发ssl证书"
 certbot --nginx
 
