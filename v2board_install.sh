@@ -141,7 +141,7 @@ echo "\033[36m##################################################################
 cat > /etc/nginx/sites-available/v2board <<"eof"
 server {
     listen      80;
-    server_name api.chuwanfeng.top;
+    server_name api.heima2u.com;
     root        /var/www/v2board/public;
     index       index.php;
     client_max_body_size 0;
@@ -160,9 +160,9 @@ server {
 }
 eof
 echo "启用站点"
-ln -s /etc/nginx/sites-available/v2boarduser /etc/nginx/sites-enabled/v2boarduser
+ln -s /etc/nginx/sites-available/v2board /etc/nginx/sites-enabled/v2board
 echo "签发ssl证书"
-certbot --nginx
+#certbot --nginx
 
 #获取主机内网ip
 ip="$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')"
