@@ -170,7 +170,7 @@ ip="$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, 
 ips="$(curl ip.sb)"
 
 # 加入开机启动
-systemctl restart php8.2-fpm mysqld redis nginx
+systemctl restart php8.2-fpm mysqld redis nginx horizon
 systemctl enable php8.2-fpm mariadb nginx redis-server
 systemctl is-enabled php8.2-fpm mariadb nginx redis-server horizon
 echo $?="服务启动完成"
